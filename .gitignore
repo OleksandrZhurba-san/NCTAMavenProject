@@ -1,5 +1,5 @@
-target/*
-.idea/*
-.settings/*
-.vscode/*
+target/
+.idea/
+.settings/
+.vscode/
 target/
