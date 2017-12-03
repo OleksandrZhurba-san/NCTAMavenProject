@@ -1,0 +1,5 @@
+ECHO is on
+.idea/*
+.settings/*
+.vscode/*
+target/*
