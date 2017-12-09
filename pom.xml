@@ -16,7 +16,7 @@
                 <version>2.20.1</version>
                 <configuration>
                     <includes>
-                        <include>ua.edu.sumdu.ta.zhurba.pr2.tests.*,ua.edu.sumdu.ta.zhurba.pr3.tests.*,ua.edu.sumdu.ta.zhurba.pr4.tests.Optional.ArrayTaskListTest,ua.edu.sumdu.ta.zhurba.pr4.tests.Optional.LinkedTaskListTest,ua.edu.sumdu.ta.zhurba.pr4.tests.Full.ArrayTaskListTest,ua.edu.sumdu.ta.zhurba.pr4.tests.Full.LinkedTaskListTest,ua.edu.sumdu.ta.zhurba.pr5.tests.Optional.ArrayTaskListTest,ua.edu.sumdu.ta.zhurba.pr5.tests.Optional.LinkedTaskListTest,
+                        <include>
                         ua.edu.sumdu.ta.zhurba.pr7.tests.WebSiteTest</include>
                     </includes>
                 </configuration>
@@ -34,6 +34,13 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
             <version>3.8.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-all -->
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

@@ -1,6 +1,6 @@
 package ua.edu.sumdu.ta.zhurba.pr2.tests;
 
-import ua.edu.sumdu.ta.zhurba.pr2.*;
+import ua.edu.sumdu.ta.zhurba.pr2.Task;
 
 import org.junit.*;
 import static org.junit.Assert.*;
