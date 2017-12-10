@@ -1,8 +1,7 @@
 package ua.edu.sumdu.ta.zhurba.pr7.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.junit.Test;
@@ -12,12 +11,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class WebSiteTest {
     @Test
-    public void testGoogleSearch() throws InterruptedException {
+    public void testGoogleSearch() throws InterruptedException, IOException {
 
         String textToSelect = "netcracker job openings";
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
@@ -55,6 +56,9 @@ public class WebSiteTest {
                 break;
             }
         }
+
+        File screenShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenShot, new File("src\\test\\resources\\screen.png"));
 
         List<WebElement> listResult = driver.findElements(By.xpath("//div[@class='job result active']"));
         Map<String,List<String>> result = new HashMap<String, List<String>>();
