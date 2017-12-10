@@ -2,7 +2,7 @@ package ua.edu.sumdu.ta.zhurba.pr6;
 
 public class ArrayTaskList extends AbstractTaskList {
 
-    private static final String PREF = "[EDUCTR][TA]";
+
     public Task[] arr;
     // private int numberElements = 0;
 

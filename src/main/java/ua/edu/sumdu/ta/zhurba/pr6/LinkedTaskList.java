@@ -32,6 +32,19 @@ public class LinkedTaskList extends AbstractTaskList {
         currentLink.setNext(tempLink);
         numberElements++;
     }
+//
+//    public String toString(){
+//        String output = "";
+//
+//        if (head != null){
+//            Link currentLink = head;
+//            while (currentLink != null){
+//                output += currentLink.getTask().toString() + "\n";
+//                currentLink = currentLink.getNext();
+//            }
+//        }
+//        return output;
+//    }
 
     @Override
     public void remove(Task task) throws IllegalArgumentException{
@@ -77,19 +90,6 @@ public class LinkedTaskList extends AbstractTaskList {
             return currentLink.getTask();
         }
         return null;
-    }
-
-    public String toString(){
-        String output = "";
-
-        if (head != null){
-            Link currentLink = head;
-            while (currentLink != null){
-                output += currentLink.getTask().toString() + "\n";
-                currentLink = currentLink.getNext();
-            }
-        }
-        return output;
     }
 
 }
