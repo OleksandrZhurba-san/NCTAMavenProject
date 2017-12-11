@@ -230,9 +230,9 @@ public class Task implements Cloneable{
     }
 
     @Override
-    protected Task clone(){
+    public Object clone(){
         try {
-            return (Task)super.clone();
+            return super.clone();
         }
         catch(CloneNotSupportedException ex) {
             throw new InternalError();

@@ -235,7 +235,7 @@ public class Task implements Cloneable {
     }
 
     @Override
-    protected Task clone() {
+    public Task clone() {
         try {
             return (Task) super.clone();
         } catch (CloneNotSupportedException ex) {

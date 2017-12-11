@@ -1,23 +1,11 @@
 package ua.edu.sumdu.ta.zhurba.pr6.tests;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
 import ua.edu.sumdu.ta.zhurba.pr6.*;
 
-public class TaskTest {
+import org.junit.*;
+import static org.junit.Assert.*;
 
-    @BeforeClass
-    public static void testDescription() {
-        System.out.println("--- description test ---");
-        Task task = new Task("Inactive repeated", 10, 100, 5);
-        System.out.println(task.toString());
-        task = new Task("Active one-time", 50);
-        task.setActive(true);
-        System.out.println(task.toString());
-        System.out.println("------------------------");
-    }
+public class TaskTest {
 
     @Test
     public void testTitle() {
@@ -26,28 +14,6 @@ public class TaskTest {
         task.setTitle("other");
         assertEquals("other", task.getTitle());
     }
-    
-    @Test(expected = RuntimeException.class)
-    public void testWrongTitle() {
-        Task task = new Task(null, 0);
-    }        
-
-    @Test(expected = RuntimeException.class)
-    public void testWrongTitle2() {
-        Task task = new Task("OK", 0);
-        task.setTitle(null);
-    }  
-
-	@Test(expected = RuntimeException.class)
-    public void testWrongTitle3() {
-        Task task = new Task("", 0);
-    }  	
-	
-	@Test(expected = RuntimeException.class)
-    public void testWrongTitle4() {
-        Task task = new Task("OK", 0);
-		task.setTitle("");
-    }	
     
     @Test
     public void testActive() {
@@ -64,7 +30,6 @@ public class TaskTest {
         assertEquals("start", 10, task.getStartTime());
         assertEquals("end", 10, task.getEndTime());
         assertFalse("repeated", task.isRepeated());
-		assertEquals("repeatInterval", 0, task.getRepeatInterval());
     }
     @Test
     public void testConstructorRepeated() {
@@ -84,7 +49,6 @@ public class TaskTest {
         assertEquals("start", 50, task.getStartTime());
         assertEquals("end", 50, task.getEndTime());
         assertFalse("repeated", task.isRepeated());
-		assertEquals("repeatInterval", 0, task.getRepeatInterval());
     }
     @Test
     public void testTimeRepeated() {
@@ -96,6 +60,18 @@ public class TaskTest {
         assertTrue("repeated", task.isRepeated());
         assertEquals("repeatInterval", 1, task.getRepeatInterval());
     }
+
+    @Test(expected = RuntimeException.class)
+    public void testWrongTitle() {
+        Task task = new Task(null, 0);
+    }        
+
+    @Test(expected = RuntimeException.class)
+    public void testWrongTitle2() {
+        Task task = new Task("OK", 0);
+        task.setTitle(null);
+    }        
+    
     
     @Test(expected = RuntimeException.class)
     public void testWrongTime() {
@@ -140,50 +116,4 @@ public class TaskTest {
         Task task = new Task("Title", 10);
         task.setTime(10, 100, -1);
     }
-    /**Additional method*/
-    @Test(expected = RuntimeException.class)
-    public void testWrongTimeAfter() {
-        Task task = new Task("some", 10);
-        task.nextTimeAfter(-1);
-    }
-    /**Additional method*/
-    @Test
-    public void testNextNonRepeative() {
-        Task task = new Task("some", 10);
-        task.setActive(true);
-        assertEquals(10, task.nextTimeAfter(0));
-        assertEquals(10, task.nextTimeAfter(9));
-        assertEquals(-1, task.nextTimeAfter(10));
-        assertEquals(-1, task.nextTimeAfter(100));
-    }
-    /**Additional method*/
-    @Test
-    public void testNextRepeative() {
-        Task task = new Task("some", 10, 100, 20);
-        task.setActive(true);
-        assertEquals(10, task.nextTimeAfter(0));
-        assertEquals(10, task.nextTimeAfter(9));
-        assertEquals(50, task.nextTimeAfter(30));
-        assertEquals(50, task.nextTimeAfter(40));
-        assertEquals(30, task.nextTimeAfter(10));
-        assertEquals(-1, task.nextTimeAfter(95));
-        assertEquals(-1, task.nextTimeAfter(100));
-    }
-    /**Additional method*/
-    @Test
-    public void testNextInactive() {
-        Task task = new Task("some", 10);
-        task.setActive(false);
-        assertEquals(-1, task.nextTimeAfter(0));
-    }
 }
-
-
-
-
-
-
-
-
-
-
