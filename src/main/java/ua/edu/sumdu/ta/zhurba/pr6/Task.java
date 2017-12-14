@@ -11,6 +11,11 @@ public class Task implements Cloneable {
     private int end = 0;
     private int repeat = 0;
 
+
+    public Task (){
+
+    }
+
     /**
      * <p>
      * Class construction for not repeatable Task
