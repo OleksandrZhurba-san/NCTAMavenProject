@@ -6,14 +6,15 @@ import org.junit.Test;
 //import ua.edu.sumdu.ta.zhurba.pr6.Task;
 
 public class TaskXMLTests {
-
+    private TaskXMLSerializer xml = new TaskXMLSerializer();
     @Test
     public void loadXML(){
-
         String path = "src\\test\\resources\\tasks.xml";
-        TaskXMLSerializer xml = new TaskXMLSerializer();
         xml.load(path);
+    }
 
+    @Test
+    public void saveXML(){
         AbstractTaskList tasks = new ArrayTaskList();
         Task[] ts = new Task[5];
         for (int i = 0; i < ts.length; i++) {
@@ -22,7 +23,6 @@ public class TaskXMLTests {
             ts[i].setActive(true);
 //            System.out.println(tasks.getTask(i).toString());
         }
-
         xml.save(tasks,"SavedTasks.xml");
     }
 }
