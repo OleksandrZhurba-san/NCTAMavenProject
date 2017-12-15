@@ -22,7 +22,8 @@ import java.io.IOException;
 public class TaskXMLSerializer {
 
 
-    public void load(String path) {
+    public AbstractTaskList load(String path) {
+        AbstractTaskList taskList;
         File fXmlFile = new File(path);
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = null;
@@ -36,8 +37,7 @@ public class TaskXMLSerializer {
             doc.getDocumentElement().normalize();
 
             if (doc.getDocumentElement().getNodeName().contains("tasks")) {
-                AbstractTaskList taskList = new ArrayTaskList();
-
+                taskList = new ArrayTaskList();
 
                 NodeList nodeList = doc.getElementsByTagName("task");
                 Task[] ts = new Task[nodeList.getLength()];
@@ -50,7 +50,7 @@ public class TaskXMLSerializer {
                         int time = Integer.parseInt(element.getAttribute("time"));
                         String title = element.getTextContent();
                         boolean isActive = Boolean.parseBoolean(element.getAttribute("active"));
-                        if (element.getAttribute("start").equals("")) {
+                        if (element.getAttribute("start").trim().isEmpty()) {
                             ts[i] = new Task(title, time);
 
                         } else {
@@ -62,16 +62,17 @@ public class TaskXMLSerializer {
                         ts[i].setActive(isActive);
                         taskList.add(ts[i]);
                         System.out.println(taskList.getTask(i).toString());
+
                     }
                 }
-
+                return taskList;
             }
-
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void save(AbstractTaskList taskList, String file){
@@ -91,7 +92,7 @@ public class TaskXMLSerializer {
                 if (taskList.getTask(i).isRepeated()){
                     String isActive = String.valueOf(taskList.getTask(i).isActive());
                     String time = String.valueOf(taskList.getTask(i).getTime());
-                    String startTime = String.valueOf(taskList.getTask(i).getStartTime());
+                    String startTime = time;
                     String endTime = String.valueOf(taskList.getTask(i).getEndTime());
                     String repeat = String.valueOf(taskList.getTask(i).getRepeatInterval());
                     String title = taskList.getTask(i).getTitle();
@@ -109,7 +110,7 @@ public class TaskXMLSerializer {
                     String isActive = String.valueOf(taskList.getTask(i).isActive());
                     String time = String.valueOf(taskList.getTask(i).getTime());
                     String startTime = "";
-                    String endTime = "";
+                    String endTime = startTime;
                     String repeat = String.valueOf(taskList.getTask(i).getRepeatInterval());
                     String isRepeated = String.valueOf(taskList.getTask(i).isRepeated());
                     String title = taskList.getTask(i).getTitle();
