@@ -211,13 +211,13 @@ public class Task implements Cloneable{
      * @return
      */
     public int nextTimeAfter(int time) throws IllegalArgumentException {
+        int nextTime = getStartTime();
+        boolean isTimeAfterEnd = time >= end;
+        boolean outOfBoundary = (time + getRepeatInterval()) > getEndTime();
 
         if (time < 0){
             throw new IllegalArgumentException("Invalid value of time. Time must be greater or equel to 0");
         }
-        int nextTime = getStartTime();
-        boolean isTimeAfterEnd = time >= end;
-        boolean outOfBoundary = (time + getRepeatInterval()) > getEndTime();
 
         if (isTimeAfterEnd || !isActive() || outOfBoundary) {
             return -1;

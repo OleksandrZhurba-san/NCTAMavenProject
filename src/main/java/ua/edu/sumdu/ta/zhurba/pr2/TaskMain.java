@@ -8,11 +8,11 @@ class TaskMain{
 
             // LinkedList list = new LinkedList();
             // LinkedTaskList tasks = new LinkedTaskList();
-            // Task myTask = new Task("Task0",10,20,1);
-            // Task myTask1 = new Task("Task1",10,20,1);
+//             Task myTask = new Task("Task0",10,20,1);
+//             Task myTask1 = new Task("Task1",10,20,1);
 
-            // tasks.add(myTask);
-            // tasks.add(myTask1);
+//             tasks.add(myTask);
+//             tasks.add(myTask1);
             // System.out.println(tasks.size());
             // Task myTask2 = myTask.clone();
 

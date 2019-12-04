@@ -1,5 +1,7 @@
 package ua.edu.sumdu.ta.zhurba.pr3;
 
+import java.util.Arrays;
+
 public class ArrayTaskList extends AbstractTaskList {
 
     private static final String PREF = "[EDUCTR][TA]";
@@ -60,5 +62,22 @@ public class ArrayTaskList extends AbstractTaskList {
         }
         // return null;
         throw new IndexOutOfBoundsException();
+    }
+
+
+    public Task[] incoming(int from, int to) {
+
+
+        Task[] taskArray = new Task[size()];
+        int arraySize = 0;
+        for (int i = 0; i < this.size(); i++) {
+            if (getTask(i).isActive()) {
+                taskArray = new Task[0];
+                break;
+            } else if (this.getTask(i).getTime() > from && this.getTask(i).getTime() <= to) {
+                    taskArray[i] = getTask(i);
+                }
+            }
+        return taskArray;
     }
 }
