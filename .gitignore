@@ -6,4 +6,5 @@ target/
 /src/main/java/ua/edu/sumdu/ta/shulhaevhen/pr4/
 /src/main/java/ua/edu/sumdu/ta/Levchenko/pr3/
 *.iml
-.*
+.classpath
+.project
